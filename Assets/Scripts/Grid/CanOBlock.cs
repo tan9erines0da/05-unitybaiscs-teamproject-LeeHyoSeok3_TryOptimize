@@ -31,10 +31,12 @@ public class CanOBlock : MonoBehaviour
 
     public void CheckAll()
     {
+        PerformanceMonitor.Instance.BeginMeasure();
         CanUp();
         CanRight();
         CanDown();
         CanLeft();
+        PerformanceMonitor.Instance.EndMeasure();
     }
 
     public void CheckNear()
