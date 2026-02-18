@@ -91,13 +91,13 @@ public class CanZBlock : MonoBehaviour
             !_this._downBlock.OnPre() &&
             !_this._downBlock._rightBlock.OnPre() )
         {
-            if(!_board.ZUpList.Contains(_this))
-                _board.ZUpList.Add(_this);
+            // _board 리스트와 딕셔너리에 그리드 추가하기
+            _board.AddList(_this, _board.ZUpList, _board.ZupIndex);
         }
         else
         {
-            if( _board.ZUpList.Contains(_this))
-                _board.ZUpList.Remove(_this);
+            // RemoveList
+            _board.RemoveList(_this, _board.ZUpList, _board.ZupIndex);
         }
     }
     void CanRight()
@@ -108,13 +108,11 @@ public class CanZBlock : MonoBehaviour
             !_this._upBlock.OnPre() &&
             !_this._downBlock._leftBlock.OnPre() )
         {
-            if(!_board.ZRightList.Contains(_this))
-                _board.ZRightList.Add(_this);
+            _board.AddList(_this, _board.ZRightList, _board.ZrightIndex);
         }
         else
         {
-            if( _board.ZRightList.Contains(_this))
-                _board.ZRightList.Remove(_this);
+            _board.RemoveList(_this, _board.ZRightList, _board.ZrightIndex);
         }
     }
     void CanDown()
@@ -125,13 +123,12 @@ public class CanZBlock : MonoBehaviour
             !_this._rightBlock.OnPre() &&
             !_this._upBlock._leftBlock.OnPre() )
         {
-            if(!_board.ZDownList.Contains(_this))
-                _board.ZDownList.Add(_this);
+            // Down에서 _this를 Add
+            _board.AddList(_this, _board.ZDownList, _board.ZdownIndex);
         }
         else
         {
-            if( _board.ZDownList.Contains(_this))
-                _board.ZDownList.Remove(_this);
+            _board.RemoveList(_this, _board.ZDownList, _board.ZdownIndex);
         }
     }
     void CanLeft()
@@ -143,14 +140,12 @@ public class CanZBlock : MonoBehaviour
             !_this._upBlock._rightBlock.OnPre() )
         {
             //리스트에 업
-            if(!_board.ZLeftList.Contains(_this))
-                _board.ZLeftList.Add(_this);
+            _board.AddList(_this, _board.ZLeftList, _board.ZleftIndex);
         }
         else
         {
             //리스트에서 해제
-            if( _board.ZLeftList.Contains(_this))
-                _board.ZLeftList.Remove(_this);
+            _board.RemoveList(_this, _board.ZLeftList, _board.ZleftIndex);
         }
     }
 }

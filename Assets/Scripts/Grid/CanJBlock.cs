@@ -92,13 +92,11 @@ public class CanJBlock : MonoBehaviour
            !_this._downBlock.OnPre() &&
            !_this._leftBlock._downBlock.OnPre() )
         {
-            if(!_board.JUpList.Contains(_this))
-                _board.JUpList.Add(_this);
+            _board.AddList(_this, _board.JUpList, _board.JupIndex);
         }
         else
         {
-            if( _board.JUpList.Contains(_this))
-                _board.JUpList.Remove(_this);
+            _board.RemoveList(_this, _board.JUpList, _board.JupIndex);
         }
     }
     void CanRight()
@@ -110,13 +108,11 @@ public class CanJBlock : MonoBehaviour
             !_this._upBlock._leftBlock.OnPre() 
             )
         {
-            if(!_board.JRightList.Contains(_this))
-                _board.JRightList.Add(_this);
+            _board.AddList(_this, _board.JRightList, _board.JrightIndex);
         }
         else
         {
-            if( _board.JRightList.Contains(_this))
-                _board.JRightList.Remove(_this);
+            _board.RemoveList(_this, _board.JRightList, _board.JrightIndex);
         }
     }
     void CanDown()
@@ -127,13 +123,11 @@ public class CanJBlock : MonoBehaviour
             !_this._upBlock._rightBlock.OnPre() &&
             !_this._upBlock.OnPre() )
         {
-            if(!_board.JDownList.Contains(_this))
-                _board.JDownList.Add(_this);
+            _board.AddList(_this, _board.JDownList, _board.JdownIndex);
         }
         else
         {
-            if( _board.JDownList.Contains(_this))
-                _board.JDownList.Remove(_this);
+            _board.RemoveList(_this, _board.JDownList, _board.JdownIndex);
         }
     }
     void CanLeft()
@@ -145,14 +139,12 @@ public class CanJBlock : MonoBehaviour
             !_this._rightBlock._downBlock.OnPre() )
         {
             //리스트에 업
-            if(!_board.JLeftList.Contains(_this))
-                _board.JLeftList.Add(_this);
+            _board.AddList(_this, _board.JLeftList, _board.JleftIndex);
         }
         else
         {
             //리스트에서 해제
-            if( _board.JLeftList.Contains(_this))
-                _board.JLeftList.Remove(_this);
+            _board.RemoveList(_this, _board.JLeftList, _board.JleftIndex);
         }
     }
 }

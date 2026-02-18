@@ -91,13 +91,11 @@ public class CanTBlock : MonoBehaviour
             !_this._leftBlock.OnPre() &&
             !_this._rightBlock.OnPre() )
         {
-            if(!_board.TUpList.Contains(_this))
-                _board.TUpList.Add(_this);
+            _board.AddList(_this, _board.TUpList, _board.TupIndex);
         }
         else
         {
-            if( _board.TUpList.Contains(_this))
-                _board.TUpList.Remove(_this);
+            _board.RemoveList(_this, _board.TUpList, _board.TupIndex);
         }
     }
     void CanRight()
@@ -108,13 +106,11 @@ public class CanTBlock : MonoBehaviour
             !_this._downBlock.OnPre() &&
             !_this._leftBlock.OnPre() )
         {
-            if(!_board.TRightList.Contains(_this))
-                _board.TRightList.Add(_this);
+            _board.AddList(_this, _board.TRightList, _board.TrightIndex);
         }
         else
         {
-            if( _board.TRightList.Contains(_this))
-                _board.TRightList.Remove(_this);
+            _board.RemoveList(_this, _board.TRightList, _board.TrightIndex);
         }
     }
     void CanDown()
@@ -125,13 +121,11 @@ public class CanTBlock : MonoBehaviour
             !_this._leftBlock.OnPre() &&
             !_this._rightBlock.OnPre() )
         {
-            if(!_board.TDownList.Contains(_this))
-                _board.TDownList.Add(_this);
+            _board.AddList(_this, _board.TDownList, _board.TdownIndex);
         }
         else
         {
-            if( _board.TDownList.Contains(_this))
-                _board.TDownList.Remove(_this);
+            _board.RemoveList(_this, _board.TDownList, _board.TdownIndex);
         }
     }
     void CanLeft()
@@ -143,14 +137,12 @@ public class CanTBlock : MonoBehaviour
             !_this._rightBlock.OnPre() )
         {
             //리스트에 업
-            if(!_board.TLeftList.Contains(_this))
-                _board.TLeftList.Add(_this);
+            _board.AddList(_this, _board.TLeftList, _board.TleftIndex);
         }
         else
         {
             //리스트에서 해제
-            if( _board.TLeftList.Contains(_this))
-                _board.TLeftList.Remove(_this);
+            _board.RemoveList(_this, _board.TLeftList, _board.TleftIndex);
         }
     }
 }
